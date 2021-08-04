@@ -2,8 +2,8 @@
 /**
  * Check all existing CSV files into "game_tables" directory and calculate the points with the aim of look for the winner.
  */
-require __DIR__ . '/vendor/autoload.php';
-include_once('config.php');
+require __DIR__ . "/vendor/autoload.php";
+include_once("config.php");
 
 $inputDir = scandir(INPUT_DIR);
 
@@ -13,11 +13,11 @@ $tournament = \GWC\Models\Tournament::getInstance();
 foreach( $inputDir as $gameFile ){
 
     if( !in_array($gameFile, FILE_EXCEPTIONS) ){ //Skip navigation directories
-        //Check if it's a CSV file
+        //Check if it"s a CSV file
         $extension = pathinfo($gameFile, PATHINFO_EXTENSION);
-        if( $extension == 'csv' ) {
+        if( $extension == "csv" ) {
 
-            $filePath = INPUT_DIR.'/'.$gameFile;
+            $filePath = INPUT_DIR."/".$gameFile;
 
             //Get CSV data
             if (($fileHandler = fopen($filePath, "r")) !== false) {
@@ -26,8 +26,8 @@ foreach( $inputDir as $gameFile ){
 
                     if( 0 == $rowCounter ){ //First row: Game name
                         if( $tournament->exist($rowData[0]) ){
-                            echo 'EL JUEGO '.$rowData[0].' YA HA SIDO VALORADO PREVIAMENTE EN EL TORNEO ACTUAL';
-                            break;  //Exit from while because this file doesn't have to be processed
+                            echo "\nEL JUEGO ".$rowData[0]." YA HA SIDO VALORADO PREVIAMENTE EN EL TORNEO ACTUAL";
+                            break;  //Exit from while because this file doesn"t have to be processed
 
                         } else {
                             //Create Game object and add it to the tournament
@@ -36,7 +36,7 @@ foreach( $inputDir as $gameFile ){
                         }
 
                     } else {    //Other rows: Players
-                        if( $game->getId() == 'LEAGUE OF LEGENDS' ){    //LOL player
+                        if( $game->getId() == "LEAGUE OF LEGENDS" ){    //LOL player
                             if( $rowData && count($rowData) == 10 ){ //Exist necessry data
                                 if($rowData[1]){    //Nickname not empty
                                     if( !$game->exist($rowData[1]) ){
@@ -55,12 +55,12 @@ foreach( $inputDir as $gameFile ){
                                         $game->addPlayer($player);
 
                                     } else {
-                                        echo 'YA HA SIDO PROCESADO PREVIAMENTE EL JUGADOR '.$rowData[1].' EN EL JUEGO '.$game->getId();
+                                        echo "\nYA HA SIDO PROCESADO PREVIAMENTE EL JUGADOR ".$rowData[1]." EN EL JUEGO ".$game->getId();
                                     }
                                 }
 
                             } else {
-                                echo 'FALTAN DATOS DE JUGADOR EN LA FILA: '.$rowCounter;
+                                echo "\nDATOS INCORRECTOS EN LA FILA DE EXCEL: ".($rowCounter+1)." | JUEGO: ".$game->getId()." | NUM COLS: ".count($rowData);
                             }
 
                         } else {    //Other game player
@@ -71,12 +71,12 @@ foreach( $inputDir as $gameFile ){
                                         $game->addPlayer($player);
 
                                     } else {
-                                        echo 'YA HA SIDO PROCESADO PREVIAMENTE EL JUGADOR '.$rowData[1].' EN EL JUEGO '.$game->getId();
+                                        echo "\nYA HA SIDO PROCESADO PREVIAMENTE EL JUGADOR ".$rowData[1]." EN EL JUEGO ".$game->getId();
                                     }
                                 }
 
                             } else {
-                                echo 'FALTAN DATOS DE JUGADOR EN LA FILA: '.$rowCounter;
+                                echo "\nDATOS INCORRECTOS EN LA FILA DE EXCEL: ".($rowCounter+1)." | JUEGO: ".$game->getId()." | NUM COLS: ".count($rowData);
                             }
                         }
                     }
@@ -87,7 +87,7 @@ foreach( $inputDir as $gameFile ){
             }
 
         } else {
-            echo 'NO SE HA PODIDO PROCESAR EL ARCHIVO '.$gameFile.' POR NO RESPETAR EL FORMATO CSV';
+            echo "\nNO SE HA PODIDO PROCESAR EL ARCHIVO ".$gameFile." POR NO RESPETAR EL FORMATO CSV";
         }
     }
 }
@@ -95,7 +95,11 @@ foreach( $inputDir as $gameFile ){
 //Show winners
 $winners = $tournament->getWinners();
 if( $winners ){
+    echo "\n\n\n\n**************************";
+    echo "\n* AND THE WINNERS ARE...";
+    echo "\n**************************";
     foreach( $winners as $game => $winner ){
-        echo 'GAME: '.$game.' | PLAYER: '.$winner->getNick().' | SCORE: '.$winner->getScore();
+        echo "\n** GAME: ".$game." | WINNER: ".$winner->getNick()." | SCORE: ".$winner->getScore();
     }
+    echo "\n**************************";
 }
