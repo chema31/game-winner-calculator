@@ -1,6 +1,8 @@
 <?php
 namespace GWC\Models;
 
+use GWC\Interfaces\IPlayer;
+
 class LolPlayer extends Player
 {
     protected $winner;

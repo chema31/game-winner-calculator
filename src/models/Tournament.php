@@ -7,6 +7,8 @@
 
 namespace GWC\Models;
 
+use GWC\Interfaces\IGame;
+
 class Tournament
 {
     private static $instance = null;
@@ -44,12 +46,12 @@ class Tournament
 
     /**
      * Check if game already exist into the tournament
-     * @param IGame game
+     * @param string gameId
      * @return boolean
      */
-    public function exist(IGame $game)
+    public function exist(string $gameId)
     {
-        return array_key_exists($game->getId(), $this->games);
+        return array_key_exists($gameId, $this->games);
     }
 
     /**

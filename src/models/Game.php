@@ -1,14 +1,14 @@
 <?php
 namespace GWC\Models;
 
-
 use GWC\Interfaces\IGame;
+use GWC\Interfaces\IPlayer;
 
 class Game implements IGame
 {
     protected $id;
     protected $players = [];
-    protected $winner;
+    protected $winner = null;
     protected $teams = [];
 
     /**
@@ -43,9 +43,11 @@ class Game implements IGame
         //TODO: Recalculate team score in game
 
         //Check: Winner
-        if( $player->getScore() > $this->winner->getScore() ){
+        if( !$this->winner || $player->getScore() > $this->winner->getScore() ){
             $this->winner = $player;
         }
+
+        return $this->players[$player->getNick()];
     }
 
     /**
