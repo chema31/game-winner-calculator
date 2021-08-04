@@ -1,0 +1,10 @@
+VALORANT
+player 1;nick1;Team A;false;
+player 2;nick2;Team A;false;
+player 3;nick3;Team A;false;
+player 4;nick4;Team A;false;
+
+player 6;nick6;Team B;true;10;2
+player 7;nick7;Team B;true;9;3
+player 8;nick8;Team B;true;5;5
+player 9;nick8;Team B;true;

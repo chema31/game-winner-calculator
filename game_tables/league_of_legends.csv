@@ -1,0 +1,11 @@
+LEAGUE OF LEGENDS
+player 1;nick1;Team A;true;T;10;5;2;2000;200
+player 2;nick2;Team A;true;B;8;4;4;1800;0
+player 3;nick3;Team A;true;M;7;7;4;2500;50
+player 4;nick4;Team A;true;S;1;5;12;50;2200
+player 5;nick5;Team A;true;J;6;1;14;2500;800
+player 6;nick6;Team B;false;T;3;10;2;2;1200;100
+player 7;nick7;Team B;false;B;6;3;3;1400;200
+player 8;nick8;Team B;false;M;9;5;4;1600;300
+player 9;nick9;Team B;false;S;2;7;1;300;1400
+player 10;nick10;Team B;false;S;2;7;1;300;1500

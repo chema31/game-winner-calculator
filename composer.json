@@ -1,0 +1,9 @@
+{
+    "name": "smallworld/game-winner-calculator",
+    "description": "SmallWorld test - Calculator for game winners",
+    "autoload": {
+        "psr-4": {
+            "GWC\\": "src/"
+        }
+    }
+}
