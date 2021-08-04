@@ -37,7 +37,7 @@ class LolGame extends Game
     protected function getWinnerTeam(): ITeam
     {
         foreach( $this->teams as $team){
-            if(!$this->winnerTeam || $team->isWinner()){
+            if($team->isWinner()){
                 $this->winnerTeam = $team;
             }
         }
