@@ -13,3 +13,9 @@ de una forma coherente, respetando buenas prácticas y que sea flexible frente a
 
 Para ello, he creado un  patrón Singleton que asegura que cada importación almacene los datos en una única instancia de torneo.
 He llamado torneo al conjunto de juegos que son procesados en cada importación.
+
+Según se van procesando los ficheros CSV, se van creando los objetos de jugadores y juegos necesarios y se van añadiendo
+al Singleton del torneo.
+
+Para ejecutar la prueba, sólo hay que ejecutar el archivo "index.php".
+La interfaz es muy básica y está pensada para mostrar los datos en un terminal.
