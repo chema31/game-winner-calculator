@@ -8,7 +8,7 @@ class Player implements IPlayer
 {
     protected $name;
     protected $nickname; //Unique key
-    protected $teamName;    //TODO: In future, we should decoupled as independient object
+    protected $teamName;
     protected $kills;
     protected $deaths;
     protected $score = 0;
@@ -53,6 +53,23 @@ class Player implements IPlayer
 
     public function getScore(): float
     {
+        return $this->score;
+    }
+
+    public function getTeamName(): string
+    {
+        return $this->teamName;
+    }
+
+    public function getKills(): int
+    {
+        return $this->kills;
+    }
+
+    public function addExtraScore(float $points): float
+    {
+        $this->score += $points;
+
         return $this->score;
     }
 }

@@ -54,19 +54,9 @@ class Tournament
         return array_key_exists($gameId, $this->games);
     }
 
-    /**
-     * Return an array with the tournament winners with an entry per game
-     *
-     * @return array
-     */
-    public function getWinners()
+
+    public function getGames()
     {
-        $winners = [];
-
-        foreach( $this->games as $game){
-            $winners[$game->getId()] = $game->getWinner();
-        }
-
-        return $winners;
+        return $this->games;
     }
 }

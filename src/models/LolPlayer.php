@@ -49,4 +49,10 @@ class LolPlayer extends Player
 
         return $this->score;
     }
+
+    public function getWinner(): bool
+    {
+        return $this->winner;
+    }
+
 }

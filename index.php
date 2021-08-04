@@ -31,7 +31,7 @@ foreach( $inputDir as $gameFile ){
 
                         } else {
                             //Create Game object and add it to the tournament
-                            $game = new \GWC\Models\Game($rowData[0]);
+                            $game = ($rowData[0] == "LEAGUE OF LEGENDS")? new \GWC\Models\LolGame($rowData[0]) : new \GWC\Models\Game($rowData[0]);
                             $tournament->addGame($game);
                         }
 
@@ -93,13 +93,21 @@ foreach( $inputDir as $gameFile ){
 }
 
 //Show winners
-$winners = $tournament->getWinners();
-if( $winners ){
+$games = $tournament->getGames();
+if( $games ){
     echo "\n\n\n\n**************************";
     echo "\n* AND THE WINNERS ARE...";
     echo "\n**************************";
-    foreach( $winners as $game => $winner ){
-        echo "\n** GAME: ".$game." | WINNER: ".$winner->getNick()." | SCORE: ".$winner->getScore();
+    foreach( $games as $game){
+        $winner = $game->checkWinner();
+        $winnerTeam = $game->getCurrentWinnerTeam();
+        echo "\n** GAME: ".$game->getId();
+        if( $winnerTeam ){
+            echo "\n** GAME: ".$game->getId()." | TEAM WINNER: ".$winnerTeam->getName();
+        }
+        if( $winner ){
+            echo "\n** GAME: ".$game->getId()." | WINNER: ".$winner->getNick()." | SCORE: ".$winner->getScore();
+        }
+        echo "\n**************************";
     }
-    echo "\n**************************";
 }
