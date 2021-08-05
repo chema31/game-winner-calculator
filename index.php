@@ -46,7 +46,7 @@ foreach( $inputDir as $gameFile ){
                                             $rowData[2],    //team
                                             $rowData[5],    //kills
                                             $rowData[6],    //deaths
-                                            $rowData[3],    //winner
+                                            (strtolower($rowData[3]) == 'true'),    //winner
                                             $rowData[4],    //position
                                             $rowData[7],    //assits
                                             $rowData[8],    //damage
