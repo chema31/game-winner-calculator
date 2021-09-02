@@ -12,6 +12,13 @@ class Player implements IPlayer
     protected $kills;
     protected $deaths;
     protected $score = 0;
+    public static $csvFields = [
+        'name' => 0,
+        'nickName' => 1,
+        'teamName' => 2,
+        'kills' => 4,
+        'deaths' => 5
+    ];
 
     /**
      * Initialize the object

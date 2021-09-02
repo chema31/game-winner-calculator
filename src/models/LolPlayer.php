@@ -10,6 +10,18 @@ class LolPlayer extends Player
     protected $assists;
     protected $damage;
     protected $heal;
+    public static $csvFields = [
+        'name' => 0,
+        'nickName' => 1,
+        'teamName' => 2,
+        'kills' => 5,
+        'deaths' => 6,
+        'winner' => 3,
+        'position' => 4,
+        'assists' => 7,
+        'damage' => 8,
+        'heal' => 9
+    ];
 
     /**
      * Initialize the object
