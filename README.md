@@ -40,3 +40,15 @@ Para ejecutar el programa, sólo hay que descargarse el código, que incluye uno
 lanzar la siguiente línea de comando desde el terminal: 
 `php index.php`
 
+## TO-DO: Pendiente de mejora cuando la vida me de ratos
+
+- Introducir tests.
+
+- Añadir Logs en ficheros.
+
+- Desacoplar la pequeña vista que muestra los resultados del modelo torneo.
+
+- Crear la interfaz mediante comandos con parámetros, de forma que se indique si sólo se quiere ver los ganadores 
+o si también se quieren visualizar los problemas encontrados durante el proceso de parseo.
+
+- Crear servicios para las pequeñas lógicas de los objetos.
