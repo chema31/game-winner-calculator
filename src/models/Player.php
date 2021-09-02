@@ -1,7 +1,6 @@
 <?php
 namespace GWC\Models;
 
-
 use GWC\Interfaces\IPlayer;
 
 class Player implements IPlayer
