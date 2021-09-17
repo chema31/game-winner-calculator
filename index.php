@@ -5,7 +5,7 @@
 require __DIR__ . "/vendor/autoload.php";
 include_once("config.php");
 
-$tournament = \GWC\Models\Tournament::getInstance();
+$action = new \GWC\Actions\LookForWinners(new \GWC\Logic\CsvParser(), new \GWC\Views\CliResultsView());
 
 //Execute the current tournament calculations
-$tournament->execute(new \GWC\Logic\CsvParser());
+$action->execute();

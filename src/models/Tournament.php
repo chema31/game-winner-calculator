@@ -8,7 +8,6 @@
 namespace GWC\Models;
 
 use GWC\Interfaces\IGame;
-use GWC\Interfaces\IParser;
 
 class Tournament
 {
@@ -56,37 +55,11 @@ class Tournament
     }
 
     /**
-     * Execute the tournament logic
+     * Get games
+     * @return array
      */
-    public function execute(IParser $parser)
+    public function getGames()
     {
-        $inputDir = scandir(INPUT_DIR);
-
-        //Loop over all files
-        foreach( $inputDir as $gameFile ){
-
-            if( !in_array($gameFile, FILE_EXCEPTIONS) ){ //Skip navigation directories
-                $numParsedItems = $parser->parseFile($gameFile);
-            }
-        }
-
-        //Show winners
-        if( $numParsedItems && $this->games ){
-            echo "\n\n\n\n**************************";
-            echo "\n* AND THE WINNERS ARE...";
-            echo "\n**************************";
-            foreach( $this->games as $game){
-                $winner = $game->checkWinner();
-                $winnerTeam = $game->getCurrentWinnerTeam();
-                echo "\n** GAME: ".$game->getId();
-                if( $winnerTeam ){
-                    echo "\n** GAME: ".$game->getId()." | TEAM WINNER: ".$winnerTeam->getName();
-                }
-                if( $winner ){
-                    echo "\n** GAME: ".$game->getId()." | WINNER: ".$winner->getNick()." | SCORE: ".$winner->getScore();
-                }
-                echo "\n**************************";
-            }
-        }
+        return $this->games;
     }
 }

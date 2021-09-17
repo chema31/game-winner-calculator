@@ -29,10 +29,11 @@ al Singleton del torneo.
 
 Tras la creación de las clases de "modelo" que contienen la información, he pasado a separar la lógica de negocio.
 
-Al ejecutar el torneo, se pasa como parámetro una instancia de CsvParser, que implementa la interfaz IParser, encargada del
-parseo de datos de un fichero para la carga del torneo.
+El flujo de ejecucución comienza en el archivo "index.php", desde el que se realiza la llamada a una clase controladora de acchión (que implementa la interfaz IFileAction), recibiendo como parámetro una implementación de parseador de fichero (interfaz IParser) y otra de vista (interfaz IView).
+Dotándose a la acción de las capacidades necesarias para cargar el torneo con los datos que se parseen desde fichero y se duelva el resultado desde la vista.
 
 Actualmente es un "parser" de fichero CSV, pero al haberse desacoplado de esta forma, en el futuro se podría cambiar fácilmente por cualquier otra implementación.
+Ocurre lo mismo con la vista, que actualmente implementa un resultado muy básico para CLI, pero en el futuro se podría modificar o añadir cualquier otra implementación.
  
 ## ¿Cómo ejecutar el programa?
 
@@ -46,9 +47,7 @@ lanzar la siguiente línea de comando desde el terminal:
 
 - Añadir Logs en ficheros.
 
-- Desacoplar la pequeña vista que muestra los resultados del modelo torneo.
+- Mejorar el rendimiento del cálculo de ganadores.
 
 - Crear la interfaz mediante comandos con parámetros, de forma que se indique si sólo se quiere ver los ganadores 
 o si también se quieren visualizar los problemas encontrados durante el proceso de parseo.
-
-- Crear servicios para las pequeñas lógicas de los objetos.
