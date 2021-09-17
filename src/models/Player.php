@@ -24,7 +24,8 @@ class Player implements IPlayer
      *
      * @param string $id
      */
-    public function __construct(string $name, string $nickname, string $teamName, int $kills, int $deaths){
+    public function __construct(string $name, string $nickname, string $teamName, int $kills, int $deaths)
+    {
         $this->name = $name;
         $this->nickname = $nickname;
         $this->teamName = $teamName;

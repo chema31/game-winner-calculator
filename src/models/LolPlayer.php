@@ -1,8 +1,6 @@
 <?php
 namespace GWC\Models;
 
-use GWC\Interfaces\IPlayer;
-
 class LolPlayer extends Player
 {
     protected $winner;
@@ -28,7 +26,8 @@ class LolPlayer extends Player
      *
      * @param string $id
      */
-    public function __construct(string $name, string $nickname, string $teamName, int $kills, int $deaths, bool $winner, string $position, int $assists, int $damage, int $heal){
+    public function __construct(string $name, string $nickname, string $teamName, int $kills, int $deaths, bool $winner, string $position, int $assists, int $damage, int $heal)
+    {
 
         parent::__construct($name,$nickname,$teamName,$kills,$deaths);
 
@@ -49,13 +48,13 @@ class LolPlayer extends Player
     public function calculateScore(): float
     {
         $kda = ($this->kills + $this->assists)/$this->deaths;
-        if( $this->position == 'S' ){
+        if ($this->position == 'S') {
             $this->score = ($this->damage * 0.01) + ($this->heal * 0.03) + $kda;
 
-        }elseif( $this->position == 'J' ){
+        } elseif( $this->position == 'J' ) {
             $this->score = ($this->damage * 0.02) + ($this->heal * 0.02) + $kda;
 
-        }else{  //I guess the positions are limited
+        } else {  //I guess the positions are limited
             $this->score = ($this->damage * 0.03) + ($this->heal * 0.01) + $kda;
         }
 

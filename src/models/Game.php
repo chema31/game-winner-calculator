@@ -18,7 +18,8 @@ class Game implements IGame
      *
      * @param string $id
      */
-    public function __construct(string $id){
+    public function __construct(string $id)
+    {
         $this->id = $id;
     }
 
@@ -43,7 +44,7 @@ class Game implements IGame
         $this->players[$player->getNick()] = $player;
 
         //Assign team score
-        if( !array_key_exists($player->getTeamName(), $this->teams) ){
+        if (!array_key_exists($player->getTeamName(), $this->teams)) {
             $this->teams[$player->getTeamName()] = new Team($player->getTeamName());
         }
         $this->teams[$player->getTeamName()]->incrementScore($player->getKills());
@@ -67,11 +68,11 @@ class Game implements IGame
         $winnerTeam = $this->getWinnerTeam();
 
         foreach ($this->players as $player) {
-            if($player->getTeamName() == $winnerTeam->getName()) {  //Player own to winner team
+            if ($player->getTeamName() == $winnerTeam->getName()) {  //Player own to winner team
                 $player->addExtraScore(10);
             }
 
-            if(!$this->winner || $this->winner->getScore() < $player->getScore()){
+            if (!$this->winner || $this->winner->getScore() < $player->getScore()) {
                 $this->winner = $player;
             }
         }
@@ -86,8 +87,8 @@ class Game implements IGame
      */
     protected function getWinnerTeam(): ITeam
     {
-        foreach( $this->teams as $team){
-            if(!$this->winnerTeam || $team->geScore() > $this->winnerTeam->getScore()){
+        foreach ($this->teams as $team) {
+            if (!$this->winnerTeam || $team->geScore() > $this->winnerTeam->getScore()) {
                 $this->winnerTeam = $team;
             }
         }

@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: josemaria.delanieta
- * Date: 17/09/2021
- * Time: 11:18
+ * IFileAction implementation for secuential parsing into a directory
  */
 
 namespace GWC\Actions;
@@ -31,7 +28,7 @@ class LookForWinners implements IFileAction
         $inputDir = scandir(INPUT_DIR);
 
         //Loop over all files
-        foreach( $inputDir as $gameFile ){
+        foreach ($inputDir as $gameFile) {
             if (!in_array($gameFile, FILE_EXCEPTIONS)) { //Skip navigation directories
                 $numParsedItems = $this->parser->parseFile($gameFile);
             }
@@ -43,6 +40,5 @@ class LookForWinners implements IFileAction
         } else {
             //TODO: Return an validation alert
         }
-
     }
 }

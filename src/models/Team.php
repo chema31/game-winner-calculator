@@ -14,7 +14,8 @@ class Team implements ITeam
      *
      * @param string $id
      */
-    public function __construct(string $name){
+    public function __construct(string $name)
+    {
         $this->name = $name;
     }
 

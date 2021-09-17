@@ -19,10 +19,10 @@ class LolGame extends Game
         $this->players[$player->getNick()] = $player;
 
         //Assign team score
-        if( !array_key_exists($player->getTeamName(), $this->teams) ){
+        if (!array_key_exists($player->getTeamName(), $this->teams)) {
             $this->teams[$player->getTeamName()] = new LolTeam($player->getTeamName());
         }
-        if( !$player->getWinner() ){
+        if (!$player->getWinner()) {
             $this->teams[$player->getTeamName()]->setLooser();
         }
 
@@ -36,8 +36,8 @@ class LolGame extends Game
      */
     protected function getWinnerTeam(): ITeam
     {
-        foreach( $this->teams as $team){
-            if($team->isWinner()){
+        foreach ($this->teams as $team) {
+            if ($team->isWinner()) {
                 $this->winnerTeam = $team;
             }
         }
